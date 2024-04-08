@@ -2,10 +2,10 @@ import tsCompiler from 'typescript';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { ignoreArr } from './constant';
-import { findImportItem } from '../util';
+import findImportItem from '../util/index';
 
 /**忽视.gitignore中的文件，默认忽略node_modules, dist等文件夹 */
-export const ignoreFile = async (baseName: string, ignoreFiles: string[]) => {
+const ignoreFile = async (baseName: string, ignoreFiles: string[]) => {
     const files = await fs.readdir(baseName);
     for (let i = 0; i < files.length; i++) {
         if (ignoreFiles.includes(files[i])) {
@@ -17,7 +17,7 @@ export const ignoreFile = async (baseName: string, ignoreFiles: string[]) => {
 }
 
 // 递归查找文件夹里面的每一个文件
-const recursiveSearch = async(directory: string) => {
+export const recursiveSearch = async(directory: string) => {
     const dirs = await ignoreFile(directory, ignoreArr);
     for (let file of dirs) {
         const fullPath = path.join(directory, file);

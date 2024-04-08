@@ -1,4 +1,4 @@
-export const enum Ignore_File {
+const enum Ignore_File {
     GitIgnore = '.gitignore',
     NodeModules = 'node_modules',
     Dist = 'dist'
