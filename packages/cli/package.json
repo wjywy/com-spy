@@ -1,0 +1,33 @@
+{
+  "name": "@com-spy/cli",
+  "version": "2.0.9",
+  "description": "",
+  "main": "./dist/index.js",
+  "private": false,
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "ca": "node ./bin/cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "@com-spy/core": "^2.0.9",
+    "cac": "^6.7.14",
+    "chalk": "^4.1.2",
+    "commander": "^12.0.0",
+    "enquirer": "^2.4.1",
+    "moment": "^2.30.1",
+    "ora": "^5.4.1"
+  },
+  "gitHead": "6dce11f1fec217de68e4ad9f9a576e6a5974e790"
+}

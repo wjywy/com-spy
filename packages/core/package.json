@@ -1,0 +1,30 @@
+{
+  "name": "@com-spy/core",
+  "version": "2.0.9",
+  "description": "",
+  "main": "./dist/index.js",
+  "private": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "glob": "^10.3.12",
+    "moment": "^2.30.1"
+  },
+  "gitHead": "6dce11f1fec217de68e4ad9f9a576e6a5974e790"
+}
