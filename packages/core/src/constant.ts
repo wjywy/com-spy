@@ -2,7 +2,7 @@ export const defaultConfig = {
     ignore: ['node_modules', '.gitignore', 'dist', '.git'],
     dirPath: process.cwd(),
     comName: '',
-    outDir: '../output/component.json',
+    outDir: './output/component.json',
     ui: true
 }
 
