@@ -1,8 +1,15 @@
-const enum Ignore_File {
-    GitIgnore = '.gitignore',
-    NodeModules = 'node_modules',
-    Dist = 'dist',
-    Git = '.git'
+export const defaultConfig = {
+    ignore: ['node_modules', '.gitignore', 'dist', '.git'],
+    dirPath: process.cwd(),
+    comName: '',
+    outDir: '../output/component.json',
+    ui: true
 }
 
-export const ignoreArr: string[] = [Ignore_File.GitIgnore, Ignore_File.NodeModules, Ignore_File.Git, Ignore_File.Dist]
+export interface ConfigProp {
+    ignore: string[];
+    dirPath: string;
+    comName: string;
+    outDir: string;
+    ui: boolean;
+}
