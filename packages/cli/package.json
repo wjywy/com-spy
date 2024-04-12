@@ -21,7 +21,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@com-spy/core": "^1.0.7",
+    "@com-spy/core": "^1.0.10",
     "cac": "^6.7.14",
     "chalk": "^4.1.2",
     "commander": "^12.0.0",
