@@ -15,12 +15,16 @@ export const getLocalJson = async () => {
     const resolvePath = path.join(process.cwd(), CONFIGE_JSON);
     console.log(resolvePath, 'resolvePath');
     if (fs.existsSync(resolvePath)) {
-        const localConfig = await import(pathToFileURL(CONFIGE_JSON).toString(), {
-            assert: {
-                type: 'json',
-            }
-        });
-        return localConfig.default
+        try {
+            const localConfig = await import(pathToFileURL(CONFIGE_JSON).toString(), {
+                assert: {
+                    type: 'json',
+                }
+            });
+            return localConfig.default   
+        } catch (error) {
+            console.log(error);
+        }
     } else {
         return {};
     }
@@ -31,14 +35,17 @@ export const confirmOptions = async (options: optionsProp) => {
 
     // 获取本地配置
     const jsonDefault = await getLocalJson();
-    if (jsonDefault.dirPath) {
-        ans.dirPath = jsonDefault.dirPath;
-    }
-    if (jsonDefault.ignore) {
-        ans.ignore = Array.from(new Set(ans.ignore.concat(jsonDefault.ignore))); // ignore 不应该被全量覆盖，合并去重就好
-    }
-    if (jsonDefault.outDir) {
-        ans.outDir = jsonDefault.outDir;
+
+    if (jsonDefault) {
+        if (jsonDefault.dirPath) {
+            ans.dirPath = jsonDefault.dirPath;
+        }
+        if (jsonDefault.ignore) {
+            ans.ignore = Array.from(new Set(ans.ignore.concat(jsonDefault.ignore))); // ignore 不应该被全量覆盖，合并去重就好
+        }
+        if (jsonDefault.outDir) {
+            ans.outDir = jsonDefault.outDir;
+        }
     }
 
     // 获取命令行参数
