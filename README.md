@@ -3,7 +3,9 @@
 ## 快速开始
 ### 本地 CLI
 将 ComSpy 安装到项目，使用 pnpm
+
 `pnpm add @com-spy/cli`
+
 之后你可以在 `package.json` 中添加 **script** 脚本
 ```json
 "scripts": {
@@ -12,6 +14,7 @@
 ```
 如果想根据默认配置直接生成依赖分析 JSON 文件，直接在命令行中运行
 `pnpm run ca`
+
 默认配置如下
 ```javascript
 export const defaultConfig = {
