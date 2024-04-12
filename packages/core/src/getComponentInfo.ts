@@ -67,7 +67,7 @@ export class analysis {
     public async OutputFile() {
         const { dirPath, outDir } = this.args;
         await this.recursiveSearch(dirPath);
-        const jsonStr = JSON.stringify(Object.fromEntries(this.outputData));
+        const jsonStr = JSON.stringify(Object.fromEntries(this.outputData), null, 2);
         const filePath = path.join(process.cwd(), outDir);
         // 获取目录路径
         const dirName = path.dirname(filePath);
