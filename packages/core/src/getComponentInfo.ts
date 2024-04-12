@@ -61,48 +61,6 @@ export class analysis {
                 }
             }
         }
-
-        // const dirs = await fs.readdir(dirPath);
-        // let { comName, ignore } = this.args;
-        // for (let file of dirs) {
-        //     const fullPath = path.join(dirPath, file);
-        //     const fileStat = await fs.stat(fullPath);
-        //     if (fileStat.isDirectory()) {
-        //         if (!ignore.includes(file)) {
-        //             await this.recursiveSearch(fullPath);
-        //         }
-        //     } else {
-        //         // 处理文件
-        //         const content = await fs.readFile(fullPath ,'utf8');
-        //         const ast = tsCompiler.createSourceFile('xxx', content, tsCompiler.ScriptTarget.Latest, true);
-        //         const importItem = findImportItem(ast, fullPath);
-
-        //         // 转换数据结构
-        //         if (comName === '') {
-        //             for (let [key, values] of importItem) {
-        //                 for (let item of values) {
-        //                     if (this.outputData.has(item)) {
-        //                         this.outputData.set(item, (this.outputData.get(item) as string[]) ?.concat(key));
-        //                     } else {
-        //                         this.outputData.set(item, [key]);
-        //                     }
-        //                 }
-        //             }
-        //         } else {
-        //             for (let [key, values] of importItem) {
-        //                 for (let item of values) {
-        //                     if (item === comName) {
-        //                         if (this.outputData.has(item)) {
-        //                             this.outputData.set(item, (this.outputData.get(item) as string[]) ?.concat(key));
-        //                         } else {
-        //                             this.outputData.set(item, [key]);
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     // 将结果写入文件
