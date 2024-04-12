@@ -35,7 +35,8 @@ export const confirmOptions = async (options: optionsProp) => {
         ans.dirPath = jsonDefault.dirPath;
     }
     if (jsonDefault.ignore) {
-        ans.ignore = jsonDefault.ignore;
+        ans.ignore = Array.from(new Set(ans.ignore.concat(jsonDefault.ignore))); // ignore 不应该被全量覆盖，合并去重就好
+        console.log(ans.ignore, 'ignore');
     }
     if (jsonDefault.outDir) {
         ans.outDir = jsonDefault.outDir;
