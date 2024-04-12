@@ -20,7 +20,7 @@ export const getLocalJson = async () => {
                 type: 'json',
             }
         });
-        return localConfig.default;
+        return localConfig.default
     } else {
         return {};
     }
