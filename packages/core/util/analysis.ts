@@ -13,45 +13,52 @@ export const findImportItem = (ast: tsCompiler.SourceFile, filePath: string) => 
     }
 
     // 遍历 AST 寻找 import 节点
-    const walk = (node: tsCompiler.Node) => {
-        tsCompiler.forEachChild(node, walk);
-
-        // 分析引入情况
-        if (tsCompiler.isImportDeclaration(node)) {
-            if (node.moduleSpecifier && node.moduleSpecifier.getText()) {
-                // 存在导入项
-                if (node.importClause) {
-                    // default 直接引入场景
-                    if (node.importClause.name) {
-                        const name = node.importClause.name.escapedText;
-                        dealImports(filePath, name);
-                    }
-
-                    if (node.importClause.namedBindings) {
-                        // 拓展导入情况，包含 as 情况
-                        if (tsCompiler.isNamedImports(node.importClause.namedBindings)) {
-                            if (node.importClause.namedBindings.elements && node.importClause.namedBindings.elements.length > 0) {
-                                const tempArr = node.importClause.namedBindings.elements;
+    function walk(node: tsCompiler.Node) {
+        const stack = [node]; // 使用数组作为显式栈
+    
+        while (stack.length > 0) {
+            const currentNode = stack.pop(); // 取出栈顶元素
+            if (!currentNode) continue;
+    
+            // 分析引入情况
+            if (tsCompiler.isImportDeclaration(currentNode)) {
+                if (currentNode.moduleSpecifier && currentNode.moduleSpecifier.getText()) {
+                    // 存在导入项
+                    if (currentNode.importClause) {
+                        // default 直接引入场景
+                        if (currentNode.importClause.name) {
+                            const name = currentNode.importClause.name.escapedText;
+                            dealImports(filePath, name);
+                        }
+    
+                        // 检查具名导入或全量导入场景
+                        if (currentNode.importClause.namedBindings) {
+                            // 拓展导入情况，包含 as 情况
+                            if (tsCompiler.isNamedImports(currentNode.importClause.namedBindings)) {
+                                const tempArr = currentNode.importClause.namedBindings.elements;
                                 tempArr.forEach((element) => {
                                     if (tsCompiler.isImportSpecifier(element)) {
                                         const name = element.name.escapedText;
                                         dealImports(filePath, name);
                                     }
-                                })
+                                });
                             }
-                        }
-
-                        // 全量导入 as 场景
-                        if (tsCompiler.isNamespaceImport(node.importClause.namedBindings) && node.importClause.namedBindings.name) {
-                            const name = node.importClause.namedBindings.name.escapedText;
-                            dealImports(filePath, name);
+    
+                            // 全量导入 as 场景
+                            if (tsCompiler.isNamespaceImport(currentNode.importClause.namedBindings) && currentNode.importClause.namedBindings.name) {
+                                const name = currentNode.importClause.namedBindings.name.escapedText;
+                                dealImports(filePath, name);
+                            }
                         }
                     }
                 }
-            } 
+            }
+    
+            // 将当前节点的所有子节点推入栈中
+            tsCompiler.forEachChild(currentNode, child => stack.push(child));
         }
     }
-
+    
     walk(ast);
     return importItems;
 }

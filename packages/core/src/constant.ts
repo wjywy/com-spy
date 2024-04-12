@@ -1,5 +1,5 @@
 export const defaultConfig = {
-    ignore: ['node_modules', '.gitignore', 'dist', '.git'],
+    ignore: ['node_modules', '.gitignore', 'dist', '.git', 'pnpm-lock.yaml', 'package-lock.json', '.DS_Store', 'yarn.lock'],
     dirPath: process.cwd(),
     comName: '',
     outDir: './output/component.json',

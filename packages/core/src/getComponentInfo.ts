@@ -28,7 +28,7 @@ export class analysis {
                     if (!ignore.includes(file)) {
                         this.stack.push(fullPath);
                     }
-                } else {
+                } else if (!ignore.includes(file)) {
                     // 处理文件
                     const content = await fs.readFile(fullPath ,'utf8');
                     const ast = tsCompiler.createSourceFile('xxx', content, tsCompiler.ScriptTarget.Latest, true);
@@ -58,6 +58,8 @@ export class analysis {
                             }
                         }
                     }
+                } else {
+                    continue;
                 }
             }
         }
