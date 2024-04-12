@@ -25,7 +25,7 @@ importers:
   packages/cli:
     dependencies:
       '@com-spy/core':
-        specifier: workspace:^
+        specifier: ^1.0.3
         version: link:../core
       cac:
         specifier: ^6.7.14
@@ -55,6 +55,9 @@ importers:
 
   packages/core:
     dependencies:
+      flatted:
+        specifier: ^3.3.1
+        version: 3.3.1
       glob:
         specifier: ^10.3.12
         version: 10.3.12
@@ -1975,6 +1978,10 @@ packages:
   /flat@5.0.2:
     resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
     hasBin: true
+    dev: false
+
+  /flatted@3.3.1:
+    resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
     dev: false
 
   /follow-redirects@1.15.6:
