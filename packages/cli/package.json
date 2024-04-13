@@ -13,8 +13,8 @@
     "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "bin": {
-    "cs": "./bin/cli",
-    "comspy": "./bin/cli"
+    "cs": "./bin/cli.js",
+    "comspy": "./bin/cli.js"
   },
   "keywords": [],
   "author": "",
