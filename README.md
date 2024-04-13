@@ -9,20 +9,21 @@
 之后你可以在 `package.json` 中添加 **script** 脚本
 ```json
 "scripts": {
-  "ca" : "node ./node_modules/@com-spy/cli/bin/cli.js"  // 不够优雅，设置bin没起效果，delay研究
+  "cs" : "node ./node_modules/@com-spy/cli/bin/cli.js"  // 不够优雅，设置bin没起效果，delay研究
 },
 ```
 如果想根据默认配置直接生成依赖分析 JSON 文件，直接在命令行中运行
-`pnpm run ca`
+`pnpm run cs`
 
 默认配置如下
 ```javascript
 export const defaultConfig = {
-  ignore: ['node_modules', '.gitignore', 'dist', '.git'], // 检索中忽略的文件，当项目文件众多时建议自定义配置，否则有爆栈的风险！！！
+  ignore: ['node_modules', '.gitignore', 'dist', '.git', 'pnpm-lock.yaml', 'package-lock.json', '.DS_Store', 'yarn.lock'], // 检索中忽略的文件夹
   dirPath: process.cwd(), // 默认检索入口，即根目录
   comName: '', // 默认检索的组件名，即全量
   outDir: './output/component.json', // 默认输出 json 结果的地址
-  ui: true // 是否开启 UI 可视化界面(待完成)
+  ui: true, // 是否开启 UI 可视化界面(待完成)
+  findExtensions: ['tsx', 'jsx', 'ts', 'js', 'vue', 'html', 'css', 'less'] // 默认检索的文件后缀
 }
 ```
 具体详情请查看**配置**

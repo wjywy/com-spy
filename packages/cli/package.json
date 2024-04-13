@@ -10,8 +10,11 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "ca": "node ./bin/cli.js"
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
+  "bin": {
+    "cs": "./bin/cli",
+    "comspy": "./bin/cli"
   },
   "keywords": [],
   "author": "",

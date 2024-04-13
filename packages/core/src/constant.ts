@@ -3,7 +3,8 @@ export const defaultConfig = {
     dirPath: process.cwd(),
     comName: '',
     outDir: './output/component.json',
-    ui: true
+    ui: true,
+    findExtensions: ['tsx', 'jsx', 'ts', 'js', 'vue', 'html', 'css', 'less']
 }
 
 export interface ConfigProp {
@@ -12,4 +13,5 @@ export interface ConfigProp {
     comName: string;
     outDir: string;
     ui: boolean;
+    findExtensions: string[];
 }

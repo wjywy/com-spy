@@ -46,6 +46,9 @@ export const confirmOptions = async (options: optionsProp) => {
         if (jsonDefault.outDir) {
             ans.outDir = jsonDefault.outDir;
         }
+        if (jsonDefault.ignoreExtensions) {
+            ans.findExtensions = Array.from(new Set(ans.findExtensions.concat(jsonDefault.findExtensions))); // ignoreExtensions 也不应该被全量覆盖
+        }
     }
 
     // 获取命令行参数
