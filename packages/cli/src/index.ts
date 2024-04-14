@@ -3,6 +3,7 @@ import ora from "ora";
 import { blue, green, yellow } from "chalk";
 import analysis from '@com-spy/core';
 import { confirmOptions } from "./confirmOptions";
+import { createServer } from './createServer';
 
 const cli = cac();
 cli
@@ -47,7 +48,7 @@ cli
 
     // 如果开启 ui，则启动可视化界面
     if (options.ui) {
-      // createServer(graph, options);
+      createServer();
     }
   });
 

@@ -6,7 +6,7 @@ import { ConfigProp } from './constant';
 import { defaultConfig } from './constant';
 
 export class analysis {
-    public outputData = new Map<tsCompiler.__String, string[]>(); // 输出的数据
+    private outputData = new Map<tsCompiler.__String, string[]>(); // 输出的数据
     private stack: string[];
 
     constructor (private readonly args: ConfigProp = defaultConfig ) {
@@ -63,6 +63,13 @@ export class analysis {
                 }
             }
         }
+    }
+
+    // 获取结果
+    public async getRes () {
+        const { dirPath } = this.args;
+        await this.recursiveSearch(dirPath);
+        return JSON.stringify(Object.fromEntries(this.outputData), null, 2);
     }
 
     // 将结果写入文件

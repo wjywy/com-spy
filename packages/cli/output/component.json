@@ -1,5 +1,55 @@
 {
+  "fs": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/confirmOptions.ts"
+  ],
+  "path": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/confirmOptions.ts",
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/createServer.ts"
+  ],
+  "pathToFileURL": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/confirmOptions.ts"
+  ],
+  "CONFIGE_JSON": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/confirmOptions.ts"
+  ],
+  "defaultConfig": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/confirmOptions.ts"
+  ],
+  "ConfigProp": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/confirmOptions.ts"
+  ],
+  "express": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/createServer.ts"
+  ],
+  "ws": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/createServer.ts"
+  ],
+  "analysis": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/createServer.ts",
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/index.ts"
+  ],
+  "staticPath": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/createServer.ts"
+  ],
+  "cac": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/index.ts"
+  ],
+  "ora": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/index.ts"
+  ],
   "blue": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/index.ts"
+  ],
+  "green": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/index.ts"
+  ],
+  "yellow": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/index.ts"
+  ],
+  "confirmOptions": [
+    "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/index.ts"
+  ],
+  "createServer": [
     "/Applications/open/source-compoennt-plugin/source-component-plugin/packages/cli/src/index.ts"
   ]
 }
