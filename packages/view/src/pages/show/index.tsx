@@ -19,13 +19,11 @@ const ShowRes: React.FC = () => {
     };
 
     const searchKey = (data: G6Props | null, key: string): G6Props | null => {
-        console.log(key, 'key');
         if (!data) return null;
 
         if (!key) return data;
 
         const res = data.children?.filter(item => item.label === key);
-        console.log(res, 'res');
         if (res && res[0]) {
             return res[0];
         }
@@ -35,7 +33,6 @@ const ShowRes: React.FC = () => {
     const createView = (data: G6Props) => {
         if (graphRef.current || !containerRef.current) return;
         
-        console.log(data, 'data');
         const container = containerRef.current;
         const width = container?.scrollWidth;
         const height = container?.scrollHeight || 500;
@@ -84,7 +81,6 @@ const ShowRes: React.FC = () => {
             };
           });
 
-          console.log(data, 'root');
           graph.data(data);
           graph.render();
           graph.fitView();
