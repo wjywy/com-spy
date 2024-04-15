@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import G6 from '@antv/g6';
+import G6, {Graph} from '@antv/g6';
 import tsCompiler from 'typescript';
 import {Input, Button} from 'antd';
 import {G6Props, tran} from '../../util/tran';
 import { wsConnect } from "../../util/ws";
 
 const ShowRes: React.FC = () => {
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const graphRef = React.useRef<Graph>();
+
     const [res, setRes] = useState<G6Props | null>(null);
     const [value, setValue] = useState('');
 
@@ -29,12 +32,15 @@ const ShowRes: React.FC = () => {
         return null;
     }
 
-    const createView = (data: G6Props | null, keyWords: string) => {
-        const container = document.getElementById('container');
+    const createView = (data: G6Props) => {
+        if (graphRef.current || !containerRef.current) return;
+        
+        console.log(data, 'data');
+        const container = containerRef.current;
         const width = container?.scrollWidth;
         const height = container?.scrollHeight || 500;
         const graph = new G6.TreeGraph({
-            container: 'container',
+            container: container,
             width,
             height,
             modes: {
@@ -77,25 +83,12 @@ const ShowRes: React.FC = () => {
               },
             };
           });
-      
-          let newData: G6Props | null;
-          if (!keyWords) {
-            newData = data;
-          } else {
-            newData = searchKey(data, keyWords);
-            if (newData === null) {
-                newData = {
-                    id: '-1',
-                    label: 'lingjing',
-                    children: []
-                }
-            }
-          }
-          console.log(newData, 'root');
-          graph.data(newData as G6Props);
-          graph.changeData(newData as G6Props);
+
+          console.log(data, 'root');
+          graph.data(data);
           graph.render();
           graph.fitView();
+          graphRef.current = graph;
       
           if (typeof window !== 'undefined')
             window.onresize = () => {
@@ -106,12 +99,26 @@ const ShowRes: React.FC = () => {
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value);
+        setValue(e.target.value.trim());
     };
 
     const handleClick = () => {
-        console.log(value, 'value');
-        createView(res, value);
+        const newData = searchKey(res, value);
+        if (newData !== null) {
+            graphRef.current?.changeData(newData);
+        } else {
+            graphRef.current?.changeData({
+                id: '-1',
+                label: 'lingjing',
+                children: [
+                    {
+                        id: '-2',
+                        label: value,
+                        children: []
+                    }
+                ]
+            });
+        }
     };
 
     useEffect(() => {
@@ -120,7 +127,7 @@ const ShowRes: React.FC = () => {
 
     useEffect(() => {
         if (res !== null) {
-            createView(res, '');
+            createView(res);
         }
     }, [res])
 
@@ -131,7 +138,7 @@ const ShowRes: React.FC = () => {
                     <Input placeholder={'请输入你要查询的组件名称'} onChange={handleChange} value={value} style={{width: '60%', marginRight: '20px'}}></Input>
                     <Button type="primary" onClick={handleClick}>点击确定</Button>
                 </div>
-                <div id="container" style={{width: '100%', height: '100vh'}}></div>
+                <div ref={containerRef} style={{width: '100%', height: '100vh'}}></div>
             </div>
         </>
     ) 
