@@ -1,6 +1,6 @@
 {
   "name": "@com-spy/cli",
-  "version": "1.0.15",
+  "version": "1.1.0",
   "description": "",
   "main": "./dist/index.js",
   "private": false,
@@ -27,8 +27,8 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@com-spy/core": "^1.0.15",
-    "@com-spy/view": "^1.0.0",
+    "@com-spy/core": "^1.1.0",
+    "@com-spy/view": "^1.1.0",
     "cac": "^6.7.14",
     "chalk": "^4.1.2",
     "commander": "^12.0.0",
