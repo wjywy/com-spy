@@ -22,6 +22,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "lerna": "^8.1.2"
+    "lerna": "^8.1.2",
+    "pnpm": "^9.0.4"
   }
 }

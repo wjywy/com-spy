@@ -13,7 +13,7 @@ export class analysis {
         this.stack = [];
     }
 
-    // 迭代查找文件夹里面的每一个文件并排除指定文件夹
+    // 迭代查找文件夹里面的每一个文件并排除指定文件夹   
     private async recursiveSearch (dirPath: string) {
         this.stack.push(dirPath);
         while (this.stack.length > 0) {
